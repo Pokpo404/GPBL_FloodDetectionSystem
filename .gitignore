@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environment
+venv/
+env/
+ENV/
+.flood/  # nếu bạn đặt venv trong thư mục flood thì thêm dòng này
+
+# Logs
+*.log
+*.pot
+
+# VSCode
+.vscode/
+*.code-workspace
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Pydantic, mypy, pytest cache
+.mypy_cache/
+.pytest_cache/
+.cache/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# dotenv
+.env
+*.env
+
+# SQLite / DB local
+*.db
+*.sqlite3
