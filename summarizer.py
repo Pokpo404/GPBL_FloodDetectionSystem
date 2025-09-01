@@ -20,6 +20,44 @@ class Summarizer:
         prompt = f"Summarize the following text in a {style} way:\n\n{text}"
         response = self.model.generate_content(prompt)
         return response.text.strip()
+    
+    #summarizer with json input
+    def summarize_json(self, data: dict, style="concise"):
+        """
+        Summarize flood sensor data from JSON format.
+
+        Expected JSON format:
+        {
+            "records": [
+                {
+                    "timestamp": "2025-08-30T14:00:00",
+                    "sensor_1": 2.3,
+                    "sensor_2": 2.1
+                },
+                {
+                    "timestamp": "2025-08-30T15:00:00",
+                    "sensor_1": 2.7,
+                    "sensor_2": 2.5
+                },
+                ...
+            ]
+        }
+
+        Parameters:
+        - data (dict): JSON-like dictionary containing multiple flood sensor readings.
+        - style (str): Summary style (e.g., "concise", "detailed", "alert-focused").
+
+        Returns:
+        - str: A summarized report of water level trends and risks.
+        """
+        prompt = f"""
+        Summarize this flood report in a {style} way:
+
+        {data}
+        """
+        response = self.model.generate_content(prompt)
+        return response.text.strip()
+
 
 #testing with hardcoded text
 if __name__ == "__main__":
