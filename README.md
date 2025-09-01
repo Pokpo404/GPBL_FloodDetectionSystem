@@ -32,10 +32,6 @@ Run with Uvicorn:
 uvicorn backend.main:app --reload
 ```
 
-Or use the included script:
-```
-python backend/main.py
-```
 📡 API Testing
 
 Once running, open your browser or use Postman:
