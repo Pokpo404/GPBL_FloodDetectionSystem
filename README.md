@@ -62,3 +62,7 @@ Example body:
 Fetch all data
 
 GET http://127.0.0.1:8000/sensor-data/
+
+
+For env
+use the .env.example and create a .env is the root folder using your gemini API key
