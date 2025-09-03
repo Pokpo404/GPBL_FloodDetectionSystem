@@ -1,15 +1,32 @@
+import os
+from dotenv import load_dotenv
 import google.generativeai as genai
 
+#load environment variables from .env file
+load_dotenv()
+
 # Gemini API key
-API_KEY = "AIzaSyDg8T9a1FzYeA2JGWgTeUKCn7y4CAv_mM0"
+API_KEY = os.getenv("GEMINI_API_KEY")
 
 def gemini_chat(model="gemini-1.5-flash"):
     # Configure Gemini client
     genai.configure(api_key=API_KEY)
 
+    # Define system prompt
+    system_prompt = (
+        "You are a helpful flood monitoring assistant. "
+        "Always respond clearly and concisely. "
+        "If the user provides sensor data, summarize the flood risk and suggest actions."
+        "If no data provided, try fetch data from the database."
+        "Else, provide general flood safety tips and information."
+    )
+    
     # Starting session
-    chat = genai.GenerativeModel(model).start_chat(history=[])
-
+    chat = genai.GenerativeModel(model).start_chat(
+        history=[
+            {"role": "user", "parts": [system_prompt]}
+        ]
+    )
     print(f"💬 Chatbot running on {model}. Type 'exit' to quit.\n")
 
     while True:
