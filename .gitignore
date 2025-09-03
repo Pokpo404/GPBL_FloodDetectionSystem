@@ -35,6 +35,11 @@ Thumbs.db
 .env
 *.env
 
+# Google Cloud Credentials
+config/credentials.json
+credentials.json
+*.json
+
 # SQLite / DB local
 *.db
 *.sqlite3

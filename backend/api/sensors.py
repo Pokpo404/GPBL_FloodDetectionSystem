@@ -52,6 +52,12 @@ def list_sensors(limit: int = 100, db: Session = Depends(get_db)):
     items = db.query(models.SensorData).order_by(models.SensorData.id.desc()).limit(limit).all()
     return items
 
+@router.get("/data", response_model=List[schemas.SensorDataOut])
+def get_sensor_data(limit: int = 100, db: Session = Depends(get_db)):
+    """Alternative endpoint for frontend compatibility"""
+    items = db.query(models.SensorData).order_by(models.SensorData.id.desc()).limit(limit).all()
+    return items
+
 @router.get("/latest", response_model=schemas.SensorDataOut)
 def get_latest(db: Session = Depends(get_db)):
     item = db.query(models.SensorData).order_by(models.SensorData.id.desc()).first()
